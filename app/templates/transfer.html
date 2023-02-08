@@ -7,20 +7,28 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Signin</title>
+    <title>Transfer</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <ul>
-        <li>
-          <a href="{% url 'User' %}">Account balance</a>
-          <a href="{% url 'Transfer' %}">Transfer</a>
-        </li>
-    </ul>
   </head>
   <body class="text-center">
-  <h1>Wellcome to wellpay</h1>
+    <form class="form-signin" action="" method="post">
+      <h1 class="h3 mb-3 font-weight-normal">Transfer</h1>
+      {% csrf_token %}
+      <label for="destinationEmail" class="sr-only">Destination email address</label>
+      <input id="destinationEmail" name="destination_account_email" class="form-control" placeholder="Destination Email" required="" autofocus="" type="email">
+      <label for="transferType" class="sr-only">Destination email address</label>
+      <input id="transferType" name="transfer_type" class="form-control" placeholder="Transfer Type" required="" autofocus="" type="text">
+      <label for="currency" class="sr-only">Currency</label>
+      <input id="currency" name="transfer_currency" class="form-control" placeholder="Currency" required="" autofocus="" type="text">
+      <label for="amount" class="sr-only">Amount</label>
+      <input id="amount" name="transfer_amount" class="form-control" placeholder="Amount" required="" autofocus="" type="number">
+      <label for="reference" class="sr-only">Reference</label>
+      <input id="reference" name="transfer_reference" class="form-control" placeholder="Reference" autofocus="" type="text">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>
+    </form>
   </body>
 </html>
 <style>
