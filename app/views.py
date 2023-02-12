@@ -29,6 +29,7 @@ def transfer(request):
         else:
             transfer.save()
             update_users_balances(transfer)
+            messages.info(request, 'Transfer completed successfully.')
 
     return render(request, 'transfer.html')
 
