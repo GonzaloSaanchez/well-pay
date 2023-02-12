@@ -21,3 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls'))
 ]
+
+
+handler400 = 'app.views.handler400'
+handler404 = 'app.views.handler404'
+handler403 = 'app.views.handler403'
+handler500 = 'app.views.handler500'
