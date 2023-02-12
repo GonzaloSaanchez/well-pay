@@ -13,23 +13,41 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
-  <body class="text-center">
-  <h1>User details</h1>
-  <p>User: {{ user.name }} {{ user.surname }}</p>
-  <p>Email: {{ user.email }}</p>
-  <p>Balance: {{ user.balance }}</p>
+  <body>
+
+  <div class="header-color">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" >
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'User' %}">Account balance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Transfer' %}">Transfer</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="user-details">
+      <h1>User details</h1>
+      <p>User: {{ user.name }} {{ user.surname }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Balance: {{ user.balance }}</p>
+  </div>
   </body>
 </html>
 <style>
 html,
 body {
   height: 100%;
+  background: #f5f5f5;
 }
 
-body {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
+.user-details {
   -ms-flex-align: center;
   -ms-flex-pack: center;
   -webkit-box-align: center;
@@ -69,5 +87,8 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.header-color {
+  background:black;
 }
 </style>
