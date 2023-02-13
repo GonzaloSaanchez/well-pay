@@ -21,4 +21,4 @@ class Transfer(models.Model):
     reference = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"from: {self.origin_account} to: {self.destination_account} {self.amount} {self.currency} {self.reference}"
+        return f"{self.amount} {self.currency} from: {self.origin_account} to: {self.destination_account} reference: {self.reference}"

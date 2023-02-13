@@ -14,7 +14,10 @@ def index(request):
 def account_details(request):
     username = request.user.username
     user_account = Account.objects.get(email=username)
-    return render(request, 'user_details.html', {'user': user_account})
+    outcomingTransfers = Transfer.objects.filter(origin_account=user_account)
+    incomingTransfers = Transfer.objects.filter(destination_account=user_account)
+    return render(request, 'user_details.html',
+                  {'user': user_account, 'incomingTransfers': incomingTransfers, 'outcomingTransfers': outcomingTransfers})
 
 @login_required
 def transfer(request):
