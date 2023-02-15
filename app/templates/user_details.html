@@ -15,40 +15,47 @@
   </head>
   <body>
 
-  <div class="header-color">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" >
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'User' %}">Account balance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'Transfer' %}">Transfer</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'User' %}">Account details<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Transfer' %}">Transfer</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="user-details">
-      <h1>User details</h1>
-      <p>User: {{ user.name }} {{ user.surname }}</p>
+      <p>Name: {{ user.name }} {{ user.surname }}</p>
       <p>Email: {{ user.email }}</p>
       <p>Balance: {{ user.balance }}</p>
   </div>
 
-  <div class="user-details">
-    <h1>History</h1>
-    {% for transfer in incomingTransfers %}
-        <p>+ {{ transfer }}</p>
-    {% endfor %}
+   <div class="transfer-history">
+       <ul class="list-group">
+           {% for transfer in incomingTransfers %}
+                <li class="list-group-item list-group-item-success"> {{ transfer }} </li>
+           {% endfor %}
+       </ul>
+       <ul class="list-group">
+           {% for transfer in outcomingTransfers %}
+                <li class="list-group-item list-group-item-danger"> {{ transfer }} </li>
+           {% endfor %}
+       </ul>
+   </div>
 
-    {% for transfer in outcomingTransfers %}
-        <p>- {{ transfer }}</p>
-    {% endfor %}
-  </div>
+<!--  <div class="user-details">-->
+<!--    {% for transfer in incomingTransfers %}-->
+<!--        <p>+ {{ transfer }}</p>-->
+<!--    {% endfor %}-->
+<!---->
+<!--    {% for transfer in outcomingTransfers %}-->
+<!--        <p>- {{ transfer }}</p>-->
+<!--    {% endfor %}-->
+<!--  </div>-->
 
   </body>
 </html>
@@ -68,39 +75,13 @@ body {
   justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
+  padding-left: 40px;
   background-color: #f5f5f5;
 }
 
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+.transfer-history {
+  padding-left: 40px;
+  width: 50%;
 }
-.form-signin .checkbox {
-  font-weight: 400;
-}
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.header-color {
-  background:black;
-}
+
 </style>
