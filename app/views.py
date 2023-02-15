@@ -62,7 +62,7 @@ def generate_transfer_data(request, data, origin_account):
         amount = decimal.Decimal(data.get('transfer_amount'))
         fees = decimal.Decimal('0.01') * decimal.Decimal(amount)
         if amount < 0.1 or amount + fees > origin_account.balance:
-            messages.error(request, f'Transfer amount should be more than 0 and should '
+            messages.error(request, f'Transfer amount should be more than 0.1 and should '
                                     f'not exceed your account limit of: {origin_account.balance} ')
             return redirect('Transfer')
         else:
